@@ -19,7 +19,7 @@ window.agregarProducto = function (event) {
 	let imagen = document.getElementById('imagen').value;
 
 	//validar datos
-
+   
 	//crear un objeto
 	let productoNuevo = new Funko(codigo, nombre, numSerie, categoria, descripcion, imagen);
 	console.log(productoNuevo);
@@ -94,19 +94,22 @@ let arregloFiltrado = listaProductos.filter(function(producto){
 	return producto.codigo != codigo;       
 })
    //actualizar el locaestorage
-
+console.log(arregloFiltrado);
+localStorage.setItem("funkoKey",JSON.stringify(arregloFiltrado))
+listaProductos= arregloFiltrado;
    //volver a dibujar tabla
+leerProductos();
 
 
 }
 
-function validarCampos(input){
+window.validarCampos=function(input){
 	let campo=input.value
 	if(campo.length>0){
-		console.log("validar campo");
-	}
+		input.className="form-control is-valid"
+	}else{input.className="form-control is-invalid"}
 }
 
-function pepito(){
-	console.log("hola");
-}
+
+
+
