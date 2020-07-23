@@ -99,3 +99,14 @@ let arregloFiltrado = listaProductos.filter(function(producto){
 
 
 }
+
+function validarCampos(input){
+	let campo=input.value
+	if(campo.length>0){
+		console.log("validar campo");
+	}
+}
+
+function pepito(){
+	console.log("hola");
+}
