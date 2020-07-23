@@ -86,6 +86,7 @@ function dibujarFilas(arregloLCS) {
 function limpiarFormulario(){
 	let formulario= document.getElementById("formularioPadreNodo");
 	formulario.reset();
+	productoExistente = flase;
 
 }
 window.eliminarProducto= function(codigo){
@@ -124,6 +125,7 @@ window.prepararProducto=function(codigo){
 
 let objetoDevueltoPorFind = listaProductos.find(function(elementoDentroDelArreglo){
 	return elementoDentroDelArreglo.codigo == codigo;
+	productoExistente= true;
 })
 console.log(objetoDevueltoPorFind);
 
