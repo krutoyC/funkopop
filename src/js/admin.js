@@ -74,7 +74,7 @@ function dibujarFilas(arregloLCS) {
 	<td>${arregloLCS[i].imagen}</td>
 	<td>
 		<button class="btn btn-danger" onclick="eliminarProducto(${arregloLCS[i].codigo})">Eliminar</button>
-		<button class="btn btn-primary">Modificar</button>
+		<button class="btn btn-primary" onclick="prepararProducto(${arregloLCS[i].codigo})">Modificar</button>
 	</td>
 </tr>`;
 		tablapadre.innerHTML += codHTML;
@@ -112,4 +112,6 @@ window.validarCampos=function(input){
 
 
 
-
+window.prepararProducto=function(codigo){
+	console.log(codigo);
+}
