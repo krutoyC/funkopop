@@ -2,13 +2,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import '../css/style.css';
 import Funko from './funko.js';
+import $ from 'jquery';
 
 //inicializo variables
 let listaProductos = [];
 leerProductos();
+let productoExistente= false; // cuando producto existente sea = false quiero agregar un producto y cuando sea =true quiero modificar un producto
 
-window.agregarProducto = function (event) {
-	event.preventDefault();
+window.agregarProducto = function () {
+	
 	console.log('desde funcion agregar producto');
 	//tomar los valores de los input
 	let codigo = document.getElementById('codigo').value;
@@ -114,4 +116,43 @@ window.validarCampos=function(input){
 
 window.prepararProducto=function(codigo){
 	console.log(codigo);
+	//buscar el objeto en el arreglo
+	//for (let i in arreglo){
+		// if{(aarregloo[i].codigo==codigo)
+	// }
+	// }
+
+let objetoDevueltoPorFind = listaProductos.find(function(elementoDentroDelArreglo){
+	return elementoDentroDelArreglo.codigo == codigo;
+})
+console.log(objetoDevueltoPorFind);
+
+
+
+//en el formulario, en cada input mostrar la propiedad del objeto encontrado
+document.getElementById("codigo").value= objetoDevueltoPorFind.codigo;
+document.getElementById("nombre").value= objetoDevueltoPorFind.codigo;
+document.getElementById("numSerie").value= objetoDevueltoPorFind.codigo;
+document.getElementById("categoria").value= objetoDevueltoPorFind.codigo;
+document.getElementById("descripcion").value= objetoDevueltoPorFind.codigo;
+document.getElementById("imagen").value= objetoDevueltoPorFind.codigo;
+//mostrar ventana modal
+let ventanaModal = document.getElementById("exampleModal");
+$(ventanaModal).modal("show");
+}
+
+
+window.decidision=function(){
+	event.preventDefault();
+	if(productoExistente==false){
+		agregarProducto();
+	}else{
+		modificarProducto();
+	}
+
+}
+
+function modificarProducto(){
+	console.log("modificarProducto");
+limpiarFormulario();
 }
